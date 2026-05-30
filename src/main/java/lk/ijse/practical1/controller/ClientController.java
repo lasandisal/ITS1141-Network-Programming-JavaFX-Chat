@@ -24,17 +24,14 @@ public class ClientController {
     @FXML
     public void initialize() {
         textName.setText("Offline");
-
-        // EXAM SAFE TRICK: Ensure hitting Enter on the username field triggers connection
         textUsername.setOnAction(event -> handleUsernameSubmit());
     }
 
     @FXML
-    void btnSendOnAction(ActionEvent event) { // Added ActionEvent parameter to match FXML
+    void btnSendOnAction(ActionEvent event) {
         sendTextMessage();
     }
 
-    // This handles hitting "Enter" on the message input text field directly
     @FXML
     void textFieldOnAction(ActionEvent event) {
         sendTextMessage();
@@ -54,7 +51,7 @@ public class ClientController {
     }
 
     @FXML
-    void btnFileOnAction(ActionEvent event) { // Matches FXML target parameter
+    void btnFileOnAction(ActionEvent event) {
         if (dos == null) return;
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog((Stage) textField.getScene().getWindow());
@@ -72,7 +69,7 @@ public class ClientController {
     }
 
     @FXML
-    void btnEmojiOnAction(ActionEvent event) { // Matches FXML target parameter
+    void btnEmojiOnAction(ActionEvent event) {
         textField.appendText("😊");
         textField.requestFocus();
     }
@@ -96,7 +93,6 @@ public class ClientController {
                 dos.writeUTF(name);
                 dos.flush();
 
-                // Instantly update local log to show you are connected successfully
                 Platform.runLater(() -> textArea.appendText("[System]: Connected to server!\n"));
 
                 while (true) {

@@ -23,12 +23,10 @@ public class ClientHandler implements Runnable {
             dos = new DataOutputStream(socket.getOutputStream());
 
             this.username = dis.readUTF();
-// Pass null because this is a system message; everyone needs to see it
             server.broadcastText("[SYSTEM]: " + username + " entered the chat room.", null);
 
             while (true) {
                 int dataType = dis.readInt();
-                // Inside the while(true) loop of ClientHandler
                 if (dataType == FileUtil.TYPE_TEXT) {
                     String message = dis.readUTF();
                     server.broadcastText(username + ": " + message, this); // Pass 'this' as the sender

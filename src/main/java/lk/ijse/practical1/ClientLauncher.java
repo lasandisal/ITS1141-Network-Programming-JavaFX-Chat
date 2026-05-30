@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 public class ClientLauncher extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        // Just point to the correct FXML path and load it normally
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/practical1/Client.fxml"));
 
         stage.setScene(new Scene(loader.load()));

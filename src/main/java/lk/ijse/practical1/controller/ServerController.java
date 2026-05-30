@@ -44,7 +44,6 @@ public class ServerController {
 
     public void broadcastText(String message, ClientHandler sender) {
         for (ClientHandler client : clients) {
-            // If sender is null, it goes to everyone. If sender matches, it skips them.
             if (sender == null || client != sender) {
                 client.sendRawText(message);
             }
@@ -69,7 +68,6 @@ public class ServerController {
     void btnSendOnAction(ActionEvent event) {
         String msg = textField.getText().trim();
         if (!msg.isEmpty()) {
-            // Pass null so the admin message is delivered to all clients
             broadcastText("Server-Admin: " + msg, null);
             textField.clear();
         }
