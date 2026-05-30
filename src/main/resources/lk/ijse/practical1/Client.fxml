@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="10" prefHeight="450.0" prefWidth="380.0" style="-fx-padding: 15;"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lk.ijse.practical1.controller.ClientController">
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="textUsername" promptText="Type Username &amp; Press Enter..." HBox.hgrow="ALWAYS"/>
+        <Text fx:id="textName" text="Offline" style="-fx-font-weight: bold;"/>
+    </HBox>
+
+    <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" wrapText="true"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="textField" promptText="Message..." HBox.hgrow="ALWAYS" onAction="#btnSendOnAction"/>
+        <Button text="😊" onAction="#btnEmojiOnAction"/>
+        <Button text="📎" onAction="#btnFileOnAction"/>
+        <Button fx:id="btnSend" text="Send" onAction="#btnSendOnAction"/>
+    </HBox>
+</VBox>
