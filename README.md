@@ -20,4 +20,23 @@ A high-performance, multithreaded desktop chat application built as part of the 
 * **UI Framework:** JavaFX 21 (FXML-driven layouts)
 * **Build System:** Apache Maven
 * **Networking Layer:** Custom Sockets (`java.net.ServerSocket`, `java.net.Socket`)
-* **Data Streams:** DataInputStream / DataOutputStream
+* **Data Streams:** `DataInputStream` / `DataOutputStream`
+
+---
+
+## 📂 Project Structure
+
+```text
+src/main/
+├── java/lk/ijse/practical1/
+│   ├── controller/
+│   │   ├── ClientController.java  # Handles client UI & socket inputs
+│   │   ├── ServerController.java  # Handles server engine & admin UI
+│   │   └── ClientHandler.java     # Worker thread for each client
+│   ├── util/
+│   │   └── FileUtil.java          # Byte streams & data packet utilities
+│   ├── ClientLauncher.java        # Main entry for Client app
+│   └── ServerLauncher.java        # Main entry for Server app
+└── resources/lk/ijse/practical1/
+    ├── Client.fxml                # Dark-themed Client layout
+    └── Server.fxml                # Dark-themed Server layout
