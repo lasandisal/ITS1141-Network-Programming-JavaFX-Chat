@@ -3,6 +3,7 @@ package lk.ijse.practical1.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -43,7 +44,6 @@ public class ClientController {
             String msg = textField.getText().trim();
             if (msg.isEmpty()) return;
             FileUtil.sendText(msg, dos);
-            textArea.appendText("Me: " + msg + "\n");
             textField.clear();
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,7 +70,9 @@ public class ClientController {
 
     @FXML
     void btnEmojiOnAction(ActionEvent event) {
-        textField.appendText("😊");
+        Button clickedButton = (Button) event.getSource();
+        String emoji = clickedButton.getText();
+        textField.appendText(emoji);
         textField.requestFocus();
     }
 
@@ -101,9 +103,14 @@ public class ClientController {
                         String msg = dis.readUTF();
                         Platform.runLater(() -> textArea.appendText(msg + "\n"));
                     } else if (type == FileUtil.TYPE_FILE) {
+
                         String absolutePath = FileUtil.receiveAndSaveFile(dis, "downloads");
-                        Platform.runLater(() -> textArea.appendText("[FILE RECEIVED]: Saved to " + absolutePath + "\n"));
+                        File downloadedFile = new File(absolutePath);
+                        String savedFileName = downloadedFile.getName();
+                        String displayMessage = "[File Downloaded]: Saved to downloads/" + savedFileName;
+                        Platform.runLater(() -> textArea.appendText(displayMessage + "\n"));
                     }
+
                 }
             } catch (IOException e) {
                 Platform.runLater(() -> textArea.appendText("Disconnected from Server.\n"));

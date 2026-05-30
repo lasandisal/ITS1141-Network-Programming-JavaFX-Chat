@@ -29,7 +29,7 @@ public class ServerController {
 
         new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(6055)){
-                Platform.runLater(() -> textArea.appendText("Server Started on port 3000...\n"));
+                Platform.runLater(() -> textArea.appendText("Server Started on port 6055...\n"));
                 while (true) {
                     Socket socket = serverSocket.accept();
                     ClientHandler handler = new ClientHandler(socket, this);
@@ -73,6 +73,12 @@ public class ServerController {
         }
     }
 
-    @FXML void btnEmojiOnAction(ActionEvent event) { textField.appendText("😎"); }
+    @FXML
+    void btnEmojiOnAction(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        String emoji = clickedButton.getText();
+        textField.appendText(emoji);
+        textField.requestFocus();
+    }
     @FXML void btnFileOnAction(ActionEvent event) { Platform.runLater(() -> textArea.appendText("Admin cannot send local files directly.\n")); }
 }

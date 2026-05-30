@@ -29,12 +29,14 @@ public class ClientHandler implements Runnable {
                 int dataType = dis.readInt();
                 if (dataType == FileUtil.TYPE_TEXT) {
                     String message = dis.readUTF();
-                    server.broadcastText(username + ": " + message, this); // Pass 'this' as the sender
+                    String formattedMessage = username + ": " + message;
+                    server.broadcastText(formattedMessage, this);
                 } else if (dataType == FileUtil.TYPE_FILE) {
                     String fileName = dis.readUTF();
                     long size = dis.readLong();
                     byte[] fileBytes = FileUtil.readFileToByteArray(dis, size);
-                    server.broadcastFile(fileName, size, fileBytes, this);
+                    String detailedFileName = username + "_sent_" + fileName;
+                    server.broadcastFile(detailedFileName, size, fileBytes, this);
                 }
             }
         } catch (IOException e) {

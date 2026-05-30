@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox spacing="10" prefHeight="450.0" prefWidth="380.0" style="-fx-padding: 15;"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="lk.ijse.practical1.controller.ClientController">
+<VBox prefHeight="450.0" prefWidth="380.0" spacing="10" style="-fx-padding: 15; -fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.practical1.controller.ClientController">
 
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <TextField fx:id="textUsername" promptText="Type Username &amp; Press Enter..." HBox.hgrow="ALWAYS"/>
-        <Text fx:id="textName" text="Offline" style="-fx-font-weight: bold;"/>
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <TextField fx:id="textUsername" promptText="Type Username &amp; Press Enter..." HBox.hgrow="ALWAYS" />
+        <Text fx:id="textName" fill="WHITE" style="-fx-font-weight: bold;" text="Offline" />
     </HBox>
 
-    <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" wrapText="true"/>
+    <TextArea fx:id="textArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
 
     <HBox spacing="10">
-        <TextField fx:id="textField" promptText="Message..." HBox.hgrow="ALWAYS" onAction="#btnSendOnAction"/>
-        <Button text="😊" onAction="#btnEmojiOnAction"/>
-        <Button text="📎" onAction="#btnFileOnAction"/>
-        <Button fx:id="btnSend" text="Send" onAction="#btnSendOnAction"/>
+        <TextField fx:id="textField" onAction="#btnSendOnAction" promptText="Message..." HBox.hgrow="ALWAYS" />
+        <Button onAction="#btnEmojiOnAction" style="-fx-background-color: yellow;" text="😊" />
+        <Button onAction="#btnFileOnAction" style="-fx-background-color: pink;" text="📎" />
+        <Button fx:id="btnSend" onAction="#btnSendOnAction" style="-fx-background-color: green;" text="Send" />
     </HBox>
 </VBox>
